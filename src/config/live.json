@@ -1,0 +1,20 @@
+{
+  "sftp": {
+    "host": "node01.cluster.eppendorf.de",
+    "port": "",
+    "user": "%%SFTP_USER%%",
+    "password":"%%SFTP_PASSWORD%%",
+    "readyTimeout": 8000,
+    "autoClose": true,
+    "tipFinderPath": "/Starlab-Magento_interface/import/tipfinder/live"
+  },
+  "elasticsearch" : {
+    "host": "%LIVE_ELASTICSEARCH_HOST%",
+    "port" : "%LIVE_ELASTICSEARCH_PORT%",
+    "indexAlias": "starlab_live_%STORE_CODE%_product"
+  },
+  "mailOptions": {
+    "subject": "Tipfinder - Error on Live System"
+  },
+  "staticManufacturerFileLocation": "/var/www/www.starlabgroup.com/lemBase/map_releases/live/magento/pub/media"
+}

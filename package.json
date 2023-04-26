@@ -1,0 +1,45 @@
+{
+  "name": "@lempm/tipfinder",
+  "version": "1.0.0",
+  "description": "Module for the starlab tipfinder",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app start",
+    "test": "jest --watch --runInBand --coverage --silent"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@glab.lemundo.de:lempm/starlab/tipfinder.git"
+  },
+  "publishConfig": {
+    "@lempm:registry": "https://glab.lemundo.de/api/v4/projects/989/packages/npm/"
+  },
+  "keywords": [
+    "Magento",
+    "starlab",
+    "tipfinder",
+    "lemundo"
+  ],
+  "author": "Adrian J. Lara C.",
+  "license": "ISC",
+  "dependencies": {
+    "@opensearch-project/opensearch": "^2.0.0",
+    "bluebird": "^3.7.2",
+    "config": "^3.3.6",
+    "dotenv": "^10.0.0",
+    "iconv-lite": "^0.6.3",
+    "lodash": "^4.17.21",
+    "mediator-js": "^0.11.0",
+    "moment": "^2.29.1",
+    "nodemailer": "^6.6.3",
+    "queue": "^6.0.2",
+    "ssh2-sftp-client": "^6.0.1",
+    "statuses": "^2.0.1",
+    "striptags": "^3.2.0",
+    "winston": "^3.3.3",
+    "yargs": "^17.0.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}

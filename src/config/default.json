@@ -1,0 +1,128 @@
+{
+  "events": {
+    "starter": [
+      "init"
+    ],
+    "sftp": [
+      "login",
+      "files_search",
+      "files_download"
+    ],
+    "files": [
+      "reader",
+      "parser",
+      "manufacturers"
+    ],
+    "elasticsearch": [
+      "connector",
+      "index_checker",
+      "index_mappings",
+      "index_attribute_injector",
+      "data_injector"
+    ],
+    "closer": [
+      "usher",
+      "end"
+    ]
+  },
+  "sftp": {
+    "host": "node01.cluster.eppendorf.de",
+    "port": "",
+    "user": "%%SFTP_USER%%",
+    "password":"%%SFTP_PASSWORD%%",
+    "readyTimeout": 8000,
+    "autoClose": true,
+    "tipFinderPath": "%PATH_TO_THE_TIPFINDER_ON_THE_SFTP%"
+  },
+  "tipfinder" : {
+    "folderName" : "data",
+    "folderNameInMagentoPub": "tip_finder",
+    "fileNameWithSuffix": "Tipfinder_",
+    "newFolderName": "new",
+    "doneFolderName": "done",
+    "errorFolderName": "error",
+    "filesPatternFilter": ".json",
+    "filesWithStoreCodes": {
+      "en_GB": "Tipfinder_M-520_en_.json",
+      "de_DE": "Tipfinder_M-521_de_.json",
+      "fr_FR": "Tipfinder_M-550_fr_.json",
+      "it_IT": "Tipfinder_M-540_it_.json",
+      "en": "Tipfinder_M-520_en_.json"
+    }
+  },
+  "elasticsearch" : {
+    "host": "%ELASTICSEARCH_HOST%",
+    "port" : "%ELASTICSEARCH_PORT%",
+    "indexAlias": "",
+    "requestTimeout" : 20000,
+    "maxRetries" : 3,
+    "apiVersion": "6.8",
+    "mappingName": "tip_finder",
+    "mappingType" : "_doc",
+    "mapping": {
+      "properties":{
+        "tip_finder" : {
+          "type": "nested",
+          "properties": {
+            "manufacturer": {
+              "type": "keyword"
+            },
+            "pipette_series": {
+              "type": "keyword"
+            },
+            "specification": {
+              "type": "keyword"
+            }
+          }
+        }
+      }
+    },
+    "sourceIsNull": "ctx._source.remove('tip_finder')",
+    "sourceAdd": "ctx._source.tip_finder.add(params.tip_finder)"
+  },
+  "storeIndexIdSuffixes": {
+    "en_GB": "default",
+    "de_DE": "de_DE",
+    "fr_FR": "fr_FR",
+    "it_IT": "it_IT",
+    "en": "en"
+  },
+  "jsonDecoding": "latin1",
+  "mailOptions": {
+    "enabled": true,
+    "opts": {
+      "sendmail": true,
+      "newline": "unix",
+      "path": "/usr/sbin/sendmail",
+      "host": "",
+      "port": "",
+      "secure": false,
+      "auth": false
+    },
+    "from": "dt@lemundo.de",
+    "to": "starlab-test@lemundo.de",
+    "subject": "Tipfinder - Error"
+  },
+  "staticManufacturerFileLocation": "%PATH_TO_THE_MAGENTO_MEDIA_FOLDER%",
+  "successfully_flag_file_name": ".tip_finder_successfully",
+  "storeCodes": {
+    "en_GB": "GB-en",
+    "de_DE": "DE-de",
+    "fr_FR": "FR-fr",
+    "it_IT": "IT-it",
+    "en": "en"
+  },
+  "attributeIndexNameSuffix": "attribute",
+  "attributeData": {
+    "entity_type_id" : 4,
+    "attribute_code" : "tip_finder",
+    "is_unique" : false,
+    "is_global" : false,
+    "is_visible" : true,
+    "is_user_defined" : true,
+    "is_searchable" : false,
+    "is_filterable" : true,
+    "is_comparable" : false,
+    "is_visible_on_front" : true
+  }
+}

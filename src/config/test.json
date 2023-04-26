@@ -1,0 +1,20 @@
+{
+  "sftp": {
+    "host": "node01.cluster.eppendorf.de",
+    "port": "",
+    "user": "%%SFTP_USER%%",
+    "password":"%%SFTP_PASSWORD%%",
+    "readyTimeout": 8000,
+    "autoClose": true,
+    "tipFinderPath": "/Starlab-Magento_interface/import/tipfinder/test"
+  },
+  "elasticsearch" : {
+    "host": "%TEST_ELASTICSEARCH_HOST%",
+    "port" : "%TEST_ELASTICSEARCH_PORT%",
+    "indexAlias": "starlab_test_%STORE_CODE%_product"
+  },
+  "mailOptions": {
+    "subject": "Tipfinder - Error on QM/Test System"
+  },
+  "staticManufacturerFileLocation": "/var/www/qm-shop.testsys.starlabgroup.com/lemBase/map_releases/test/magento/pub/media"
+}
